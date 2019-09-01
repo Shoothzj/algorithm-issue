@@ -12,7 +12,7 @@ public class Q0992 {
 
     private static final Logger log = LoggerFactory.getLogger(Q0992.class);
 
-    public int subarrayWithKDistinct(int[] A, int K) {
+    public int subarraysWithKDistinct(int[] A, int K) {
         List<Set<Integer>> setList = new ArrayList<>();
         int result = 0;
         for (int i = 0; i < A.length; i++) {
@@ -28,11 +28,19 @@ public class Q0992 {
             for (int j = i; j < A.length; j++) {
                 Set<Integer> integers = setList.get(j - i);
                 Set<Integer> integers1 = setList.get(j - i + 1);
+                if (integers == null || integers1 == null) {
+                    newList.add(null);
+                    continue;
+                }
                 integers.addAll(integers1);
-                newList.add(integers);
+                if (integers.size() > K) {
+                    newList.add(null);
+                    continue;
+                }
                 if (integers.size() == K) {
                     result++;
                 }
+                newList.add(integers);
             }
             setList = newList;
         }
