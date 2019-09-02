@@ -15,7 +15,7 @@ public class Q5173 {
         // 1-1 2-1
         for (int i = 3; i <= 100; i++) {
             int i1 = numPrimeArrangements(i);
-            System.out.print(i1 + ",");
+            System.out.println("i " + i + " " + i1 + ",");
         }
 //        numPrimeArrangements(100);
     }
@@ -37,7 +37,24 @@ public class Q5173 {
             }
         }
         int mod = 7 + 1000_000_000;
-        return doTheResult(primeCount, n, mod);
+        return doTheResultV2(primeCount, n, mod);
+    }
+
+    private int doTheResultV2(int primeCount, int n, int mod) {
+        long a = 1;
+        int temp = primeCount;
+        while (primeCount > 1) {
+            a = a * primeCount;
+            a %= mod;
+            primeCount--;
+        }
+        int aux = n - temp;
+        while (aux > 1) {
+            a = a * aux;
+            a %= mod;
+            aux--;
+        }
+        return (int) a;
     }
 
     private int doTheResult(int primeCount, int n, int mod) {
