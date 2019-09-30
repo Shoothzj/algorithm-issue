@@ -1,50 +1,69 @@
 package com.github.shoothzj.algorithm.leetcode;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Q0992 {
 
-    private static final Logger log = LoggerFactory.getLogger(Q0992.class);
-
+    //it's base on a formula
+    //if [i,lj] fulfill requirements, and also [i,rj] fulfill requirements
+    //and a part of result, which also rj - lj
     public int subarraysWithKDistinct(int[] A, int K) {
-        List<Set<Integer>> setList = new ArrayList<>();
-        int result = 0;
-        for (int i = 0; i < A.length; i++) {
-            HashSet<Integer> hashSet = new HashSet<>();
-            hashSet.add(A[i]);
-            setList.add(hashSet);
+        Window window1 = new Window();
+        Window window2 = new Window();
+        int ans = 0, left1 = 0, left2 = 0;
+
+        for (int right = 0; right < A.length; ++right) {
+            int x = A[right];
+            window1.add(x);
+            window2.add(x);
+
+            while (window1.different() > K)
+                window1.remove(A[left1++]);
+            while (window2.different() >= K)
+                window2.remove(A[left2++]);
+
+            ans += left2 - left1;
         }
-        if (K == 1) {
-            result += A.length;
+
+        return ans;
+    }
+
+    class Window {
+        Map<Integer, Integer> count;
+        int nonzero;
+
+        Window() {
+            count = new HashMap<>();
+            nonzero = 0;
         }
-        for (int i = 1; i < A.length; i++) {
-            List<Set<Integer>> newList = new ArrayList<>();
-            for (int j = i; j < A.length; j++) {
-                Set<Integer> integers = setList.get(j - i);
-                Set<Integer> integers1 = setList.get(j - i + 1);
-                if (integers == null || integers1 == null) {
-                    newList.add(null);
-                    continue;
+
+        void add(int x) {
+            boolean contains = count.containsKey(x);
+            if (contains) {
+                Integer integer = count.get(x);
+                if (integer == 0) {
+                    nonzero++;
                 }
-                integers.addAll(integers1);
-                if (integers.size() > K) {
-                    newList.add(null);
-                    continue;
-                }
-                if (integers.size() == K) {
-                    result++;
-                }
-                newList.add(integers);
+                count.put(x, integer + 1);
+            } else {
+                count.put(x, 1);
+                nonzero++;
             }
-            setList = newList;
         }
-        return result;
+
+        void remove(int x) {
+            Integer integer = count.get(x);
+            count.put(x, integer - 1);
+            if (integer == 1) {
+                nonzero--;
+            }
+        }
+
+        int different() {
+            return nonzero;
+        }
+
     }
 
 }

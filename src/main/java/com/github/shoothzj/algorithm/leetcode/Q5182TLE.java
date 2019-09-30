@@ -3,9 +3,9 @@ package com.github.shoothzj.algorithm.leetcode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Q5182TimeLimit {
+public class Q5182TLE {
 
-    private static final Logger logger = LoggerFactory.getLogger(Q5182TimeLimit.class);
+    private static final Logger logger = LoggerFactory.getLogger(Q5182TLE.class);
 
     public int maximumSum(int[] arr) {
         int result = Integer.MIN_VALUE;
