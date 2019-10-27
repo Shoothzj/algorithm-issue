@@ -1,54 +1,45 @@
-package com.github.shoothzj.algorithm;
-
-import com.github.shoothzj.algorithm.leetcode.LeetCodeUtil;
-import org.junit.Test;
+package com.github.shoothzj.algorithm.leetcode;
 
 public class Q0063 {
 
-    @Test
-    public void allObstacle() {
-        int i = uniquePathsWithObstacles(LeetCodeUtil.convertToArray("[[0,0,0,0],[0,1,0,0],[0,0,0,0],[0,0,1,0],[0,0,0,0]]"));
-//        int i = uniquePathsWithObstacles(new int[][]{ new int[]{0, 0}, new int[]{0, 1}});
-        System.out.println(i);
-    }
-
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {
-        if (obstacleGrid[obstacleGrid.length - 1][obstacleGrid[0].length - 1] == 1) {
-            return 0;
-        }
-        //memo n means remaining
-        int[][] memo = new int[obstacleGrid.length][obstacleGrid[0].length];
-        int res = 0;
-        for (int i = 0; i < obstacleGrid[0].length; i++) {
-            res += dfs(memo, obstacleGrid, 0, i);
-        }
-        return res;
-    }
+        int R = obstacleGrid.length;
+        int C = obstacleGrid[0].length;
 
-    private int dfs(int[][] memo, int[][] obstacleGrid, int current, int remaining) {
-        if (memo[current][remaining] != 0) {
-            return memo[current][remaining];
-        }
-        if (obstacleGrid[current][remaining] == 1) {
+        // If the starting cell has an obstacle, then simply return as there would be
+        // no paths to the destination.
+        if (obstacleGrid[0][0] == 1) {
             return 0;
         }
-        if (remaining == 0) {
-            memo[current][remaining] = 1;
-            return 1;
-        } else {
-            if (current == memo.length - 1) {
-                return 0;
-            }
-            int res = 0;
-            //you should know now you're where
-            //you are at (current, n - remaining - 1) Point
-            //now handle the down stair, it means during you down, can't have 1
-            for (int i = 0; i <= remaining; i++) {
-                res += dfs(memo, obstacleGrid, current + 1, i);
-            }
-            memo[current][remaining] = res;
-            return res;
+
+        // Number of ways of reaching the starting cell = 1.
+        obstacleGrid[0][0] = 1;
+
+        // Filling the values for the first column
+        for (int i = 1; i < R; i++) {
+            obstacleGrid[i][0] = (obstacleGrid[i][0] == 0 && obstacleGrid[i - 1][0] == 1) ? 1 : 0;
         }
+
+        // Filling the values for the first row
+        for (int i = 1; i < C; i++) {
+            obstacleGrid[0][i] = (obstacleGrid[0][i] == 0 && obstacleGrid[0][i - 1] == 1) ? 1 : 0;
+        }
+
+        // Starting from cell(1,1) fill up the values
+        // No. of ways of reaching cell[i][j] = cell[i - 1][j] + cell[i][j - 1]
+        // i.e. From above and left.
+        for (int i = 1; i < R; i++) {
+            for (int j = 1; j < C; j++) {
+                if (obstacleGrid[i][j] == 0) {
+                    obstacleGrid[i][j] = obstacleGrid[i - 1][j] + obstacleGrid[i][j - 1];
+                } else {
+                    obstacleGrid[i][j] = 0;
+                }
+            }
+        }
+
+        // Return value stored in rightmost bottommost cell. That is the destination.
+        return obstacleGrid[R - 1][C - 1];
     }
 
 }

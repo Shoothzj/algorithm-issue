@@ -3,12 +3,12 @@ package com.github.shoothzj.algorithm.leetcode.concurrent;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.IntConsumer;
 
-class FizzBuzz {
+class FizzBuzzTLE {
     private int n;
 
     private AtomicInteger atomicInteger = new AtomicInteger(1);
 
-    public FizzBuzz(int n) {
+    public FizzBuzzTLE(int n) {
         this.n = n;
     }
 
@@ -19,6 +19,8 @@ class FizzBuzz {
             if (i % 5 != 0 && i % 3 == 0) {
                 printFizz.run();
                 atomicInteger.compareAndSet(i, i + 1);
+            } else {
+                break;
             }
         }
     }
@@ -30,6 +32,8 @@ class FizzBuzz {
             if (i % 3 != 0 && i % 5 == 0) {
                 printBuzz.run();
                 atomicInteger.compareAndSet(i, i + 1);
+            } else {
+                break;
             }
         }
     }
@@ -41,6 +45,8 @@ class FizzBuzz {
             if (i % 15 == 0) {
                 printFizzBuzz.run();
                 atomicInteger.compareAndSet(i, i + 1);
+            } else {
+                break;
             }
         }
     }
@@ -52,6 +58,8 @@ class FizzBuzz {
             if (i % 3 != 0 && i % 5 != 0) {
                 printNumber.accept(i);
                 atomicInteger.compareAndSet(i, i + 1);
+            } else {
+                break;
             }
         }
     }
