@@ -1,4 +1,4 @@
-package com.github.shoothzj.algorithm.leetcode;
+package com.github.shoothzj.algorithm.leetcode.contest;
 
 public class Q5216 {
 

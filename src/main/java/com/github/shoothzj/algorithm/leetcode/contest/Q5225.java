@@ -1,5 +1,6 @@
-package com.github.shoothzj.algorithm.leetcode;
+package com.github.shoothzj.algorithm.leetcode.contest;
 
+import com.github.shoothzj.algorithm.leetcode.LeetCodeUtil;
 import org.junit.Test;
 
 import java.util.Collection;

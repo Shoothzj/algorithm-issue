@@ -1,4 +1,4 @@
-package com.github.shoothzj.algorithm.leetcode;
+package com.github.shoothzj.algorithm.leetcode.contest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
