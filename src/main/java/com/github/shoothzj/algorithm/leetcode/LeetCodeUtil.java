@@ -42,11 +42,15 @@ public class LeetCodeUtil {
         return result;
     }
 
-    //todo
     public static String[] convertToStringArray(String src) {
         src = src.trim();
         String aux = src.substring(1, src.length() - 1);
-        return aux.split(",");
+        String[] split = aux.split(",");
+        String[] result = new String[split.length];
+        for (int i = 0; i < split.length; i++) {
+            result[i] = split[i].substring(1, split[i].length() - 1);
+        }
+        return result;
     }
 
 }
