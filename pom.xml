@@ -20,29 +20,16 @@
     </build>
 
     <parent>
-        <artifactId>java-parent</artifactId>
+        <artifactId>java-dependency</artifactId>
         <groupId>com.github.shoothzj</groupId>
-        <version>1.0</version>
+        <version>3.0.2.RELEASE</version>
     </parent>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/junit/junit -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.10</version>
-        </dependency>
-
         <dependency>
             <groupId>com.github.shoothzj</groupId>
             <artifactId>java-tool</artifactId>
-            <version>1.1</version>
+            <version>3.0.12.RELEASE</version>
         </dependency>
     </dependencies>
 

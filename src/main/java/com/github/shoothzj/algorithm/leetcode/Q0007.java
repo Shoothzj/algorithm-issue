@@ -1,7 +1,8 @@
 package com.github.shoothzj.algorithm.leetcode;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Q0007 {
 
@@ -33,19 +34,19 @@ public class Q0007 {
     @Test
     public void test01() {
         int reverse = reverse(-123);
-        Assert.assertEquals(-321, reverse);
+        assertEquals(-321, reverse);
     }
 
     @Test
     public void test02() {
         int reverse = reverse(123);
-        Assert.assertEquals(321, reverse);
+        assertEquals(321, reverse);
     }
 
     @Test
     public void test03() {
         int reverse = reverse(1200);
-        Assert.assertEquals(21, reverse);
+        assertEquals(21, reverse);
     }
 
 }

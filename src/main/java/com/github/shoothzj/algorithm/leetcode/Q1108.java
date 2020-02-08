@@ -1,9 +1,10 @@
 package com.github.shoothzj.algorithm.leetcode;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Q1108 {
 
@@ -16,7 +17,7 @@ public class Q1108 {
     @Test
     public void test() {
         String result = defangIPaddr("255.100.50.0");
-        Assert.assertEquals("255[.]100[.]50[.]0", result);
+        assertEquals("255[.]100[.]50[.]0", result);
     }
 
 }

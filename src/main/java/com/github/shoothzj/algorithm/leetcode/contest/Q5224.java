@@ -1,7 +1,7 @@
 package com.github.shoothzj.algorithm.leetcode.contest;
 
 import com.github.shoothzj.algorithm.leetcode.LeetCodeUtil;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class Q5224 {
 

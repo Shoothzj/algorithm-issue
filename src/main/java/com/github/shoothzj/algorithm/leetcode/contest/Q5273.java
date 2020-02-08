@@ -2,7 +2,7 @@ package com.github.shoothzj.algorithm.leetcode.contest;
 
 import com.github.shoothzj.algorithm.leetcode.LeetCodeUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;

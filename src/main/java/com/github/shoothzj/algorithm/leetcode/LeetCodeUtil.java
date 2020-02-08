@@ -53,4 +53,20 @@ public class LeetCodeUtil {
         return result;
     }
 
+    /**
+     * input 199
+     * output 1->9->9
+     * @return
+     */
+    public static ListNode constructListNode(String str) {
+        char[] array = str.toCharArray();
+        ListNode tail = new ListNode(array[array.length - 1] - '0');
+        for (int i = array.length - 2; i >= 0; i--) {
+            ListNode aux = new ListNode(array[i] - '0');
+            aux.next = tail;
+            tail = aux;
+        }
+        return tail;
+    }
+
 }
