@@ -22,14 +22,14 @@
     <parent>
         <artifactId>java-dependency</artifactId>
         <groupId>com.github.shoothzj</groupId>
-        <version>3.0.2.RELEASE</version>
+        <version>3.0.6.RELEASE</version>
     </parent>
 
     <dependencies>
         <dependency>
             <groupId>com.github.shoothzj</groupId>
             <artifactId>java-tool</artifactId>
-            <version>3.0.12.RELEASE</version>
+            <version>3.0.26.RELEASE</version>
         </dependency>
     </dependencies>
 
